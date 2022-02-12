@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SumTwoNumbers_MVCMVPMVVM">
         <activity
+            android:name=".MvvmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MvcActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MvpActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
