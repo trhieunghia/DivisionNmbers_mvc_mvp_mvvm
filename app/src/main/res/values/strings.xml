@@ -3,4 +3,9 @@
     <string name="mvc">MVC</string>
     <string name="mvp">MVP</string>
     <string name="mvvm">MVVM</string>
+    <string name="title_mvc">Tính tổng hai số theo mô hình MVC</string>
+    <string name="zero">0</string>
+    <string name="add">+</string>
+    <string name="equals">=</string>
+    <string name="result">Result</string>
 </resources>
