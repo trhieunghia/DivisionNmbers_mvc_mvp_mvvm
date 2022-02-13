@@ -21,7 +21,7 @@
     <style name="DetailPattern.content">
         <item name="android:textSize">40sp</item>
         <item name="android:textAlignment">textEnd</item>
-        <item name="android:inputType">number</item>
+        <item name="android:inputType">numberDecimal</item>
         <item name="android:textColor">@color/blue_gray</item>
     </style>
 

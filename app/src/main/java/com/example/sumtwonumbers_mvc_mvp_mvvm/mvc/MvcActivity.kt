@@ -7,12 +7,13 @@ import android.view.MotionEvent
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.example.sumtwonumbers_mvc_mvp_mvvm.databinding.ActivityMvcBinding
 
 class MvcActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMvcBinding
-    private val model = MvcSumModel()
+    private val model = MvcDivisionModel()
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,10 +21,10 @@ class MvcActivity : AppCompatActivity() {
         binding = ActivityMvcBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.soHangA.also {
+        binding.numA.also {
             it.setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_NEXT) {
-                    model.a = model.getNumber(it.text.toString())
+                    model.a = getValue(it.text.toString())
                     showResult()
                 }
                 false
@@ -37,10 +38,10 @@ class MvcActivity : AppCompatActivity() {
             }
         }
 
-        binding.soHangB.also {
+        binding.numB.also {
             it.setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    model.b = model.getNumber(it.text.toString())
+                    model.b = getValue(it.text.toString(), differenceZero = true)
                     showResult()
                     hideSoftInput()
                 }
@@ -59,15 +60,21 @@ class MvcActivity : AppCompatActivity() {
     @SuppressLint("ServiceCast")
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         if (ev?.action == MotionEvent.ACTION_UP) {
-            model.a = model.getNumber(binding.soHangA.text.toString())
-            model.b = model.getNumber(binding.soHangB.text.toString())
+            model.a = getValue(binding.numA.text.toString())
+            model.b = getValue(binding.numB.text.toString(), differenceZero = true)
             showResult()
         }
         return super.dispatchTouchEvent(ev)
     }
 
     private fun showResult() {
-        binding.result.text = model.sum().toString()
+        if (!model.canDivision()) {
+            binding.message.isVisible = true
+            binding.result.text = "_"
+            return
+        }
+        binding.message.isVisible = false
+        binding.result.text = model.division().toString()
     }
 
     private fun hideSoftInput() =
@@ -75,4 +82,10 @@ class MvcActivity : AppCompatActivity() {
             currentFocus?.rootView?.windowToken,
             0
         )
+
+    private fun getValue(string: String, differenceZero: Boolean = false) = try {
+        string.toFloat()
+    } catch (ex: NumberFormatException) {
+        if (differenceZero) 1F else 0F
+    }
 }

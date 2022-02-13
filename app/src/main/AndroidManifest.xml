@@ -16,7 +16,7 @@
             android:name=".mvc.MvcActivity"
             android:exported="false" />
         <activity
-            android:name=".MvpActivity"
+            android:name=".mvp.MvpActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sumtwonumbers_mvc_mvp_mvvm.databinding.ActivityMainBinding
 import com.example.sumtwonumbers_mvc_mvp_mvvm.mvc.MvcActivity
+import com.example.sumtwonumbers_mvc_mvp_mvvm.mvp.MvpActivity
 
 class MainActivity : AppCompatActivity() {
 
