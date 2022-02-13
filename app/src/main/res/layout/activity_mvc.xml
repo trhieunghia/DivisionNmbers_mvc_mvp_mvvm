@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MvcActivity">
+    tools:context=".mvc.MvcActivity">
 
     <TextView
         android:id="@+id/mvcTitle"
@@ -25,6 +25,7 @@
         android:layout_marginEnd="20dp"
         android:autofillHints="@null"
         android:hint="@string/zero"
+        android:imeOptions="actionNext"
         app:layout_constraintTop_toBottomOf="@+id/mvcTitle" />
 
     <TextView
@@ -46,6 +47,7 @@
         android:layout_marginEnd="20dp"
         android:autofillHints="@null"
         android:hint="@string/zero"
+        android:imeOptions="actionDone"
         app:layout_constraintTop_toBottomOf="@+id/addMark" />
 
     <TextView
