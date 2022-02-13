@@ -9,9 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="mvc_blue">#279</color>
-
     <color name="mvp_Blue">#E3AA</color>
-
     <color name="mvvm_yellow">#E5D55C</color>
-
+    <color name="blue_gray">#37474F</color>
 </resources>

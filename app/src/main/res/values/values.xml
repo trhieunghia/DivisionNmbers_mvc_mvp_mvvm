@@ -10,4 +10,19 @@
         <item name="android:focusable">true</item>
         <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
+
+    <style name="DetailPattern">
+        <item name="android:gravity">start</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="DetailPattern.content">
+        <item name="android:textSize">40sp</item>
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:inputType">number</item>
+        <item name="android:textColor">@color/blue_gray</item>
+    </style>
+
 </resources>
