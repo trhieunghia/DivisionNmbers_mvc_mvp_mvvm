@@ -28,7 +28,7 @@ class MvpActivity : AppCompatActivity(), MvpDivisionInterface {
         binding.numA.also {
             it.setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_NEXT) {
-                    divisionModel.a = getValue(it.text.toString())
+                    divisionModel.a(it.text.toString())
                     divisionPresenter.calculating(divisionModel)
                 }
                 false
@@ -45,7 +45,7 @@ class MvpActivity : AppCompatActivity(), MvpDivisionInterface {
         binding.numB.also {
             it.setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    divisionModel.b = getValue(it.text.toString(), differenceZero = true)
+                    divisionModel.b(it.text.toString())
                     divisionPresenter.calculating(divisionModel)
                     hideSoftInput()
                 }
@@ -64,8 +64,8 @@ class MvpActivity : AppCompatActivity(), MvpDivisionInterface {
     @SuppressLint("ServiceCast")
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         if (ev?.action == MotionEvent.ACTION_UP) {
-            divisionModel.a = getValue(binding.numA.text.toString())
-            divisionModel.b = getValue(binding.numB.text.toString(), differenceZero = true)
+            divisionModel.a(binding.numA.text.toString())
+            divisionModel.b(binding.numB.text.toString())
             divisionPresenter.calculating(divisionModel)
         }
         return super.dispatchTouchEvent(ev)
@@ -76,12 +76,6 @@ class MvpActivity : AppCompatActivity(), MvpDivisionInterface {
             currentFocus?.rootView?.windowToken,
             0
         )
-
-    private fun getValue(string: String, differenceZero: Boolean = false) = try {
-        string.toFloat()
-    } catch (ex: NumberFormatException) {
-        if (differenceZero) 1F else 0F
-    }
 
     override fun error() {
         binding.message.isVisible = true
